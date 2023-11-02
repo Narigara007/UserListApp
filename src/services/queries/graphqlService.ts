@@ -1,8 +1,8 @@
-// services/graphqlService.ts
 import { ApolloClient, InMemoryCache, createHttpLink } from '@apollo/client';
+import awsconfig  from '../../../aws-exports';
 
 const httpLink = createHttpLink({
-  uri: 'https://prrwjjssnvhpbcdwbcwx3nm3zm.appsync-api.ap-southeast-2.amazonaws.com/graphql',
+  uri: awsconfig.aws_appsync_graphqlEndpoint,
 });
 
 const client = new ApolloClient({

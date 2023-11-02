@@ -1,8 +1,14 @@
 // Import necessary dependencies
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, FlatList } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  StyleSheet,
+} from 'react-native';
 import { useQuery } from '@apollo/client';
-import { LIST_ZELLER_CUSTOMERS } from '../services/queries/glQueries'; // Import your GraphQL query
+import { LIST_ZELLER_CUSTOMERS } from '../services/queries/glQueries';
 
 // Your component
 const UserList = () => {
@@ -22,22 +28,21 @@ const UserList = () => {
   const renderUserItem = ({ item }) => (
     <View>
       <Text>{item.name}</Text>
-      {/* Add other user details as needed */}
     </View>
   );
 
   return (
-    <View>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Text>Select User Type:</Text>
       <TouchableOpacity onPress={() => setSelectedUserType('Admin')}>
-        <Text>Admin</Text>
+        <Text style={styles.text}>Admin</Text>
       </TouchableOpacity>
       <TouchableOpacity onPress={() => setSelectedUserType('Manager')}>
-        <Text>Manager</Text>
+        <Text style={styles.text}>Manager</Text>
       </TouchableOpacity>
 
-      {loading && <Text>Loading...</Text>}
-      {error && <Text>Error: {error.message}</Text>}
+      {loading && <Text style={styles.text}>Loading...</Text>}
+      {error && <Text style={styles.text}>Error: {error.message}</Text>}
 
       {data && (
         <FlatList
@@ -49,5 +54,9 @@ const UserList = () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  text: { marginTop: 20 },
+});
 
 export default UserList;

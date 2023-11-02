@@ -13,7 +13,6 @@ const App: React.FC = () => {
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen name="UserList" component={UserListScreen} />
-        {/* Add more screens if needed */}
       </Tab.Navigator>
     </NavigationContainer>
     </ApolloProvider>
